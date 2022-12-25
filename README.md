@@ -34,7 +34,7 @@ Dans ce contexte, l'objectif du TD est d'<b>extraire, à partir de texte, les co
 }
 ```
 
-Ici, la dentelle (`lace`) et la maille (`mesh`) sont des noms de composants qui constituent un article vestimentaire. Ces composants sont faits de différents matériaux dont on peut trouver une liste [ici](https://maxhalford.github.io/files/datasets/nlp-carbonfact/materials.txt).
+Ici, la dentelle (`lace`) et la maille (`mesh`) sont des noms de composants qui constituent un article vestimentaire. Ces composants sont faits de différents matériaux, ici du `nylon` et du tissu élasthanne (`spandex`), dont on peut trouver une liste [ici](https://maxhalford.github.io/files/datasets/nlp-carbonfact/materials.txt).
 
 Le jeu de données complet, en accès libre, est constitué de 600 pairs (input, output), accessibles aux liens ci-dessous:
 * [inputs.txt](https://maxhalford.github.io/files/datasets/nlp-carbonfact/inputs.txt)
@@ -56,7 +56,7 @@ Cloner ce projet avec `git clone`
 
 Créer un environnement Python 3.8+, par exemple avec Anaconda `conda create -n miashs python=3.8`
 
-Activer l'environment créé avec `activate miashs` et installer les dépendances avec `pip install -r requirements.txt` or `conda install --file requirements.txt`
+Activer l'environment créé avec `activate miashs` et installer les dépendances avec `pip install -r requirements.txt` ou `conda install --file requirements.txt`
 
 # Assignment
 
@@ -85,7 +85,7 @@ Par comparaison, sur des sous-ensembles différents pour entrainer/tester, le mo
 
 # Pour aller plus loin
 
-L'approche proposée est relativement simple et peut donc être rendu plus complexe pour gagner en précision, en analysant quand/comment le modèle se trompe. En particulier le modèle initialisé pourrait être entrainé/ajusté sur les données en maximisant la vraisemblance avec l'[algorithme d'Espérance-Maximisation](https://fr.wikipedia.org/wiki/Algorithme_esp%C3%A9rance-maximisation). L'ajout de bruit (insertion, suppression, remplacement de caractère) et de simples méthodes de post-processing des composants/matériaux (par exemple avec char-tfidf et cosine similarity) peut rendre l'approche plus robuste aux erreurs de frappe. Enfin, plutôt que d'utiliser des caractères comme états observés, le modèle pourrait utiliser des ngrams (2, 3+ caractères) ou encore des représentations factorisées de caractères (LDA, NMF, pLSI) pour prendre en compte les corrélations entre ceux-ci.
+L'approche proposée est relativement simple et peut donc être rendu plus complexe pour gagner en précision, en analysant quand/comment le modèle se trompe. En particulier le modèle initialisé pourrait être entrainé/ajusté sur les données en maximisant la vraisemblance avec l'[algorithme d'Espérance-Maximisation](https://fr.wikipedia.org/wiki/Algorithme_esp%C3%A9rance-maximisation). L'ajout de bruit (insertion, suppression, remplacement de caractère) et de simples méthodes de post-processing des composants/matériaux (par exemple avec [char-tfidf](https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html) et [cosine similarity](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.cosine_similarity.html)) peut rendre l'approche plus robuste aux erreurs de frappe. Enfin, plutôt que d'utiliser des caractères comme états observés, le modèle pourrait utiliser des paires, triplets de caractères ou encore des représentations factorisées ([LDA](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.LatentDirichletAllocation.html) ou [NMF](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html)) pour prendre en compte les corrélations entre ceux-ci.
 
 # Remerciements
 
